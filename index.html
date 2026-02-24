@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PT | Master Admin Hub Premium</title>
+    <title>PT | Master Admin Hub</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -13,15 +13,15 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800;900&display=swap');
         :root { --bhagwa: #ff9933; --bg-dark: #080a0f; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-dark); color: #ffffff; margin: 0; overflow-x: hidden; }
-
-        /* --- ✨ NEW WELCOME SCREEN STYLES --- */
+        
+        /* ✨ PREMIUM WELCOME SCREEN STYLES ✨ */
         #welcome-screen {
             position: fixed; inset: 0; z-index: 11000;
             background: radial-gradient(circle at top left, rgba(255,153,51,0.1), transparent 40%),
                         radial-gradient(circle at bottom right, rgba(15,23,42,1), transparent 40%),
                         #080a0f;
             display: flex; align-items: center; justify-content: center; padding: 20px;
-            transition: opacity 0.6s ease-in-out; /* Smooth fade out */
+            transition: opacity 0.5s ease-in-out;
         }
         .welcome-glass {
             background: rgba(255, 255, 255, 0.02);
@@ -30,18 +30,18 @@
             box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8);
         }
         .hero-text-gradient { background: linear-gradient(135deg, #ffffff 60%, #ff9933); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        /* ----------------------------------- */
+        /* --------------------------------- */
 
-        /* EXISTING STYLES (UNCHANGED) */
         .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 153, 51, 0.2); border-radius: 28px; }
         .m-input { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 14px; padding: 14px; width: 100%; color: white; outline: none; }
         .btn-bhagwa { background: linear-gradient(135deg, #ff9933, #cc5500); color: white; font-weight: 800; text-transform: uppercase; border-radius: 16px; padding: 18px; width: 100%; cursor: pointer; border: none; }
+        
         #receipt-render { width: 210mm; min-height: 297mm; background: white; color: #0f172a; padding: 15mm; border: 10px solid var(--bhagwa); box-sizing: border-box; margin: 0 auto; position: relative; }
         .stamp { position: absolute; top: 12%; right: 8%; width: 140px; height: 140px; border: 6px solid; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 28px; transform: rotate(-20deg); opacity: 0.2; }
         .active-tab { background: var(--bhagwa) !important; color: white !important; }
         .qr-card { background: #0f172a; color: white; border-radius: 20px; padding: 15px; display: flex; align-items: center; gap: 15px; margin-top: 20px; border-left: 8px solid #ff9933; }
-        .warning-text { color: #e11d48; font-weight: 900; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
         .locked-screen { pointer-events: none; filter: grayscale(1) blur(8px); opacity: 0.3; }
+        .warning-text { color: #e11d48; font-weight: 900; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
     </style>
 </head>
 <body>
@@ -53,25 +53,26 @@
     <div class="welcome-glass p-10 md:p-14 rounded-[40px] text-center max-w-lg w-full mx-4 border-t-4 border-[#ff9933] relative overflow-hidden">
         <img src="https://i.ibb.co/C30Ybjck/PT-20250224-170650-0000.png" class="w-32 mx-auto mb-10 rounded-3xl border-2 border-[#ff9933]/60 shadow-2xl shadow-[#ff9933]/30 relative z-10">
 
-        <h1 class="text-6xl font-black uppercase tracking-tighter mb-3 hero-text-gradient relative z-10">Patel Traders</h1>
-        <p class="text-[#ff9933] font-bold text-sm tracking-[6px] uppercase mb-8 relative z-10">Premium Furniture Emporium</p>
+        <h1 class="text-5xl font-black uppercase tracking-tighter mb-3 hero-text-gradient relative z-10 italic">Patel Traders</h1>
+        <p class="text-[#ff9933] font-bold text-sm tracking-[6px] uppercase mb-8 relative z-10">Master Admin Hub</p>
 
         <p class="text-white/50 text-sm font-medium leading-relaxed mb-12 max-w-sm mx-auto relative z-10">
-            Welcome to the next-generation digital billing experience. Secure, fast, and professional.
+            Advanced control panel for billing, inventory, and database management.
         </p>
 
-        <button onclick="enterSystem()" class="group relative w-full py-5 bg-gradient-to-r from-[#ff9933] to-[#cc5500] rounded-2xl overflow-hidden shadow-[0_20px_40px_-15px_rgba(255,153,51,0.5)] transition-all hover:scale-[1.02] active:scale-[0.98] z-10">
+        <button onclick="enterSystem()" class="group relative w-full py-5 bg-gradient-to-r from-[#ff9933] to-[#cc5500] rounded-2xl overflow-hidden shadow-[0_20px_40px_-15px_rgba(255,153,51,0.5)] transition-all hover:scale-[1.02] active:scale-[0.98] z-10 cursor-pointer">
             <span class="relative z-10 font-black uppercase text-sm tracking-[3px] flex items-center justify-center gap-4">
-                Enter Admin Hub
+                Enter Admin Vault
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 animate-pulse">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
             </span>
         </button>
-        <p class="text-white/20 text-[9px] mt-8 uppercase font-bold tracking-widest relative z-10">Powered by Sanjay Kumar Systems</p>
+        <p class="text-white/20 text-[9px] mt-8 uppercase font-bold tracking-widest relative z-10">Digitally Encrypted System</p>
     </div>
 </div>
-<div id="security-lock" class="fixed inset-0 bg-[#080a0f] z-[9999] hidden flex-col items-center justify-center">
+
+<div id="security-lock" class="fixed inset-0 bg-[#080a0f] z-[9999] flex-col items-center justify-center" style="display: none;">
     <div class="text-center mb-8">
         <img src="https://i.ibb.co/C30Ybjck/PT-20250224-170650-0000.png" class="w-20 mx-auto mb-4 rounded-2xl border-2 border-[#ff9933]">
         <h2 id="lockStatus" class="text-xl font-black uppercase text-white tracking-widest">Admin Vault</h2>
@@ -92,7 +93,7 @@
         <p class="text-[#ff9933] font-bold text-xs mb-6 uppercase">Master Admin | Patel Traders</p>
         <div class="space-y-4 text-left bg-black/40 p-5 rounded-2xl border border-white/5">
             <div><p class="text-[9px] text-white/40 font-black">DOB</p><p class="text-sm font-bold text-white">11/01/1983</p></div>
-            <div class="flex gap-2 pt-2"><span class="bg-emerald-500/20 text-emerald-400 text-[8px] px-2 py-1 rounded font-black uppercase border border-emerald-500/20 tracking-tighter">DOB Verified</span><span class="bg-blue-500/20 text-blue-400 text-[8px] px-2 py-1 rounded font-black uppercase border border-blue-500/20 tracking-tighter">KYC Verified</span></div>
+            <div class="flex gap-2 pt-2"><span class="bg-emerald-500/20 text-emerald-400 text-[8px] px-2 py-1 rounded font-black uppercase border border-emerald-500/20">DOB Verified</span><span class="bg-blue-500/20 text-blue-400 text-[8px] px-2 py-1 rounded font-black uppercase border border-blue-500/20">KYC Verified</span></div>
         </div>
         <button onclick="closeProfile()" class="mt-8 text-white/20 text-[10px] uppercase font-black">Close Details</button>
     </div>
@@ -133,7 +134,9 @@
                         <button onclick="fetchCloud('PAID')" class="py-3 bg-emerald-500/10 text-emerald-500 rounded-xl font-bold text-[9px] uppercase border border-emerald-500/10">Paid History</button>
                         <button onclick="fetchCloud('UNPAID')" class="py-3 bg-rose-500/10 text-rose-500 rounded-xl font-bold text-[9px] uppercase border border-rose-500/10">Unpaid Dues</button>
                     </div>
-                    <div id="dbList" class="max-h-[250px] overflow-y-auto space-y-2 pr-2"></div>
+                    <div id="dbList" class="max-h-[250px] overflow-y-auto space-y-2 pr-2">
+                        <p class="text-center text-white/20 text-[10px] italic py-4">Click button to load records...</p>
+                    </div>
                 </div>
             </div>
 
@@ -141,6 +144,7 @@
                 <div id="receipt-render">
                     <div id="stP" class="stamp" style="color: #10b981; border-color: #10b981;">PAID</div>
                     <div id="stU" class="stamp" style="display:none; color: #ef4444; border-color: #ef4444;">PENDING</div>
+                    
                     <div class="flex justify-between border-b-4 pb-6 border-slate-900">
                         <img src="https://i.ibb.co/C30Ybjck/PT-20250224-170650-0000.png" class="w-20 rounded-xl" crossorigin="anonymous">
                         <div class="text-right uppercase">
@@ -148,24 +152,30 @@
                             <p class="text-[9px] font-bold text-slate-700">गांधीनगर, तालग्राम, कन्नौज (U.P.)</p>
                         </div>
                     </div>
+
                     <div class="grid grid-cols-2 my-8 font-bold uppercase text-slate-800">
                         <div><p class="text-slate-400 text-[9px]">Client Details</p><h3 id="vName" class="text-2xl font-black italic">Guest</h3><p id="vPhone" class="text-slate-500 text-sm">+91 0000000000</p></div>
                         <div class="text-right text-[10px]">INV: <span id="vInv" class="font-black">#AUTO</span><br>DATE: <span id="vDate">--</span></div>
                     </div>
+
                     <div class="min-h-[160px] border-y-2 py-6 text-xl italic font-black text-slate-900 uppercase">
                         <table class="w-full"><tr><td><span id="vItem">ITEM</span><br><small id="vDetail" class="text-xs normal-case text-slate-400 font-bold"></small><br><span id="vWar" class="text-[10px] text-orange-500">None</span></td><td id="vBase" class="text-right">₹ 0</td></tr></table>
                     </div>
+
                     <div class="mt-8 p-6 bg-slate-900 rounded-3xl flex justify-between items-center text-white">
                         <div><p class="text-[9px] text-white/40 font-black">NET PAYABLE</p><h2 id="vTotal" class="text-5xl font-black">₹ 0</h2></div>
                         <div class="text-right"><p id="vPostDisplay" class="text-rose-400 font-black text-lg italic uppercase"></p></div>
                     </div>
+
                     <div id="paymentCard" class="qr-card" style="display:none;">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=upi://pay?pa=paytmqr5feodq@ptys&pn=Paytm&tn=Verified%20Paytm%20Account&am=0" id="qrImg" class="w-20 h-20 bg-white p-1 rounded-lg">
-                        <div><p class="text-[10px] text-white/50 font-bold uppercase tracking-widest">Scan to Pay via UPI</p><p class="text-sm font-black">Secure Payment Interface</p><p class="text-[10px] text-[#ff9933] font-bold mt-1 uppercase italic">Verified Business Account</p></div>
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=upi://pay?pa=paytmqr5feodq@ptys&pn=Paytm&am=0" id="qrImg" class="w-20 h-20 bg-white p-1 rounded-lg">
+                        <div><p class="text-[10px] text-white/50 font-bold uppercase tracking-widest">Scan to Pay via UPI</p><p class="text-sm font-black">Verified Paytm Account</p></div>
                     </div>
+
                     <div class="mt-12 pt-6 border-t border-dashed border-slate-300 text-center">
+                        <h3 class="text-xs font-black text-slate-800 uppercase tracking-[5px] mb-2">Furniture Shop</h3>
                         <p class="warning-text">⚠️ RECEIPT WILL BE INVALID IF MODIFIED</p>
-                        <p class="text-[8px] font-bold text-slate-400 mt-1 uppercase tracking-tighter italic">Digitally Generated by Patel Traders System</p>
+                        <p class="text-[8px] font-bold text-slate-400 mt-1 uppercase tracking-tighter">Digitally Generated by Patel Traders System</p>
                     </div>
                 </div>
             </div>
@@ -177,19 +187,17 @@
     const CONFIG = { URL: "https://script.google.com/macros/s/AKfycbyqGgozh6soglW6b_8s7LSr96_gIGNaweAnG1CQn-_F5HytVi9pYGi3GDX-lSz-mEyD/exec", PIN: "7314" };
     let currentPin = "", attempts = 0, billMode = "PAID", dbRecords = [];
 
-    // ✨ NEW FUNCTION TO HANDLE WELCOME SCREEN
+    // ✨ NEW: Welcome Screen Logic
     function enterSystem() {
         const welcome = document.getElementById('welcome-screen');
         const lock = document.getElementById('security-lock');
-        welcome.style.opacity = '0'; // Fade out effect
+        welcome.style.opacity = '0';
         setTimeout(() => {
             welcome.style.display = 'none';
-            lock.classList.remove('hidden'); // Show security lock
-            lock.classList.add('flex');
-        }, 500); // Wait for fade to complete
+            lock.style.display = 'flex'; // Show security pad
+        }, 500);
     }
 
-    // Existing Functions (Unchanged)
     function pressPin(n) {
         if(currentPin.length < 4) {
             currentPin += n; updateDots();
@@ -204,26 +212,31 @@
             }
         }
     }
+
     function lockSystem() {
         let timer = 300;
         document.getElementById('numpad').classList.add('locked-screen');
         document.getElementById('lockStatus').innerText = "SYSTEM LOCKED";
         const interval = setInterval(() => {
-            document.getElementById('lockMsg').innerText = `Bahut galat attempts! Wait: ${Math.floor(timer/60)}m ${timer%60}s`;
+            document.getElementById('lockMsg').innerText = `Wait: ${Math.floor(timer/60)}m ${timer%60}s`;
             timer--;
             if(timer < 0) {
                 clearInterval(interval);
                 document.getElementById('numpad').classList.remove('locked-screen');
                 document.getElementById('lockStatus').innerText = "Admin Vault";
-                document.getElementById('lockMsg').innerText = "Patel Traders Secure Access";
                 attempts = 0; clearPin();
             }
         }, 1000);
     }
-    function updateDots() { const dots = document.querySelectorAll('#pinDots div'); dots.forEach((d, i) => d.style.background = i < currentPin.length ? '#ff9933' : 'transparent'); }
+
+    function updateDots() {
+        const dots = document.querySelectorAll('#pinDots div');
+        dots.forEach((d, i) => d.style.background = i < currentPin.length ? '#ff9933' : 'transparent');
+    }
     function clearPin() { currentPin = ""; updateDots(); }
     function openProfile() { document.getElementById('profile-modal').style.display = 'flex'; }
     function closeProfile() { document.getElementById('profile-modal').style.display = 'none'; }
+
     function setBillMode(m) {
         billMode = m;
         document.getElementById('mP').className = m === 'PAID' ? 'w-1/2 py-3 rounded-lg font-black text-[10px] active-tab' : 'w-1/2 py-3 rounded-lg font-black text-[10px] text-white/50';
@@ -234,6 +247,7 @@
         document.getElementById('inPostDate').style.display = m === 'UNPAID' ? 'block' : 'none';
         sync();
     }
+
     function sync() {
         const a = parseFloat(document.getElementById('inAmt').value) || 0, d = parseFloat(document.getElementById('inDisc').value) || 0;
         const total = a - d;
@@ -246,8 +260,9 @@
         document.getElementById('vTotal').innerText = "₹ " + total.toLocaleString();
         document.getElementById('vDate').innerText = new Date().toLocaleDateString('en-GB');
         document.getElementById('vPostDisplay').innerText = billMode === 'UNPAID' ? "DUE: " + document.getElementById('inPostDate').value : "";
-        document.getElementById('qrImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=upi://pay?pa=paytmqr5feodq@ptys&pn=Paytm&tn=Verified%20Paytm%20Account&am=${total}`;
+        document.getElementById('qrImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=upi://pay?pa=paytmqr5feodq@ptys&pn=Paytm&am=${total}`;
     }
+
     async function saveAndPrint() {
         const inv = "PT-B-" + Date.now().toString().slice(-6);
         const data = { type: "BILL", inv, name: document.getElementById('inName').value, phone: document.getElementById('inPhone').value, item: document.getElementById('inItem').value, total: document.getElementById('vTotal').innerText, date: document.getElementById('vDate').innerText, mode: billMode, warranty: document.getElementById('inWarranty').value, detail: document.getElementById('inDetail').value, postdate: document.getElementById('inPostDate').value };
@@ -257,30 +272,62 @@
         pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 210, 297);
         pdf.save(`${inv}_${data.name}.pdf`);
     }
+
     async function fetchCloud(m) {
-        const list = document.getElementById('dbList'); list.innerHTML = `<p class='text-center py-4 text-white/20 text-[9px] animate-pulse'>Reading Cloud...</p>`;
+        const list = document.getElementById('dbList'); 
+        list.innerHTML = `<p class='text-center py-4 text-white/20 text-[9px] animate-pulse'>Reading Cloud...</p>`;
         try {
             const res = await fetch(`${CONFIG.URL}?action=getBills`);
             dbRecords = await res.json();
             const filtered = dbRecords.filter(r => r.mode === m).reverse();
-            list.innerHTML = filtered.map(r => `<div class='flex justify-between items-center p-3 bg-white/5 rounded-xl border-l-4 border-[#ff9933]'><div><p class='font-bold text-xs'>${r.name}</p><p class='text-[8px] opacity-30'>${r.date} | ${r.total}</p></div><button onclick="handleSilentPDF(${dbRecords.indexOf(r)})" class='text-[8px] font-black bg-white/10 px-3 py-1 rounded-lg'>PDF</button></div>`).join('') || "No Records Found";
-        } catch(e) { list.innerHTML = "Error!"; }
+            
+            // ✅ MARK PAID & PDF BUTTONS INTACT
+            list.innerHTML = filtered.map(r => `
+                <div class='flex justify-between items-center p-3 bg-white/5 rounded-xl border-l-4 mb-2 ${m === 'PAID' ? 'border-emerald-500' : 'border-rose-500'}'>
+                    <div><p class='font-bold text-xs text-white'>${r.name}</p><p class='text-[8px] opacity-40'>${r.inv} | ${r.total}</p></div>
+                    <div class='flex gap-2'>
+                        ${m === 'UNPAID' ? `<button onclick="markAsPaid('${r.inv}')" class='text-[8px] font-black bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-lg hover:bg-emerald-500/40 transition'>✓ PAID</button>` : ''}
+                        <button onclick="handleSilentPDF(${dbRecords.indexOf(r)})" class='text-[8px] font-black bg-white/10 px-3 py-1 rounded-lg hover:bg-[#ff9933] transition'>PDF</button>
+                    </div>
+                </div>`).join('') || "<p class='text-center py-4 text-white/10 italic text-xs'>No Records Found</p>";
+        } catch(e) { list.innerHTML = `<p class='text-rose-500 text-center text-[10px]'>Error connecting to cloud!</p>`; }
     }
+
+    async function markAsPaid(invNum) {
+        if(!confirm("क्या आप इस बिल को PAID मार्क करना चाहते हैं?")) return;
+        try {
+            const data = { type: "MARK_PAID", inv: invNum };
+            await fetch(CONFIG.URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) });
+            alert("✅ बिल अपडेट हो गया है! अब यह ग्राहक को PAID दिखेगा।");
+            fetchCloud('UNPAID'); 
+        } catch(e) { alert("Error updating status!"); }
+    }
+
     window.handleSilentPDF = async function(idx) {
         const r = dbRecords[idx];
         document.getElementById('vName').innerText = r.name; document.getElementById('vPhone').innerText = r.phone;
-        document.getElementById('vInv').innerText = r.inv; document.getElementById('vItem').innerText = r.item;
-        document.getElementById('vDetail').innerText = r.detail || ""; document.getElementById('vTotal').innerText = r.total;
-        document.getElementById('vBase').innerText = r.total; document.getElementById('vWar').innerText = "Warranty: " + (r.warranty || "None");
-        document.getElementById('vDate').innerText = r.date;
+        document.getElementById('vInv').innerText = r.inv; document.getElementById('vItem').innerText = r.item; 
+        document.getElementById('vDetail').innerText = r.detail || ""; document.getElementById('vTotal').innerText = r.total; 
+        document.getElementById('vBase').innerText = r.total; document.getElementById('vWar').innerText = "Warranty: " + (r.warranty || "None"); 
+        
+        let d = r.date; if(d && d.includes('T')) d = d.split('T')[0].split('-').reverse().join('/');
+        document.getElementById('vDate').innerText = d;
+
         document.getElementById('stP').style.display = r.mode === 'PAID' ? 'flex' : 'none';
         document.getElementById('stU').style.display = r.mode !== 'PAID' ? 'flex' : 'none';
+        document.getElementById('paymentCard').style.display = r.mode !== 'PAID' ? 'flex' : 'none';
+
+        if(r.mode !== 'PAID') {
+            const cleanAmt = String(r.total).replace(/[₹\s,]/g, '');
+            document.getElementById('qrImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=upi://pay?pa=paytmqr5feodq@ptys&pn=Paytm&am=${cleanAmt}`;
+        }
+
         setTimeout(async () => {
             const canvas = await html2canvas(document.getElementById('receipt-render'), { scale: 2, useCORS: true });
             const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
             pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 210, 297);
             pdf.save(r.inv + ".pdf");
-        }, 1200);
+        }, 800);
     };
 </script>
 </body>
