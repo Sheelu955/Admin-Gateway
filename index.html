@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PT | Master Admin Hub</title>
+    <title>PT | Master Admin Hub (Ultra-Secured)</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -11,102 +11,227 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800;900&display=swap');
-        :root { --bhagwa: #ff9933; --bg-dark: #080a0f; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-dark); color: #ffffff; margin: 0; overflow-x: hidden; }
+        :root { --bhagwa: #ff9933; --bhagwa-dark: #cc5500; --bg-superdark: #03050a; }
         
-        #welcome-screen { position: fixed; inset: 0; z-index: 11000; background: radial-gradient(circle at top left, rgba(255,153,51,0.1), transparent 40%), radial-gradient(circle at bottom right, rgba(15,23,42,1), transparent 40%), #080a0f; display: flex; align-items: center; justify-content: center; padding: 20px; transition: opacity 0.5s ease-in-out; }
-        .welcome-glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(30px); border: 1px solid rgba(255, 153, 51, 0.3); box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8); }
-        .hero-text-gradient { background: linear-gradient(135deg, #ffffff 60%, #ff9933); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: var(--bg-superdark); 
+            color: #ffffff; 
+            margin: 0; 
+            overflow-x: hidden; 
+        }
         
-        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 153, 51, 0.2); border-radius: 28px; }
-        .m-input { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 14px; padding: 14px; width: 100%; color: white; outline: none; transition: 0.3s;}
-        .m-input:focus { border-color: var(--bhagwa); }
-        .btn-bhagwa { background: linear-gradient(135deg, #ff9933, #cc5500); color: white; font-weight: 800; text-transform: uppercase; border-radius: 16px; padding: 18px; width: 100%; cursor: pointer; border: none; }
-        .btn-bhagwa:active { transform: scale(0.98); }
+        /* 🌌 ULTRA-ADVANCED AURORA BACKGROUND */
+        .bg-aurora {
+            position: fixed; inset: 0; z-index: -2; background: var(--bg-superdark); overflow: hidden;
+        }
+        .bg-aurora::after {
+            content: ''; position: absolute; inset: 0;
+            background-image: linear-gradient(rgba(255, 153, 51, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 153, 51, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px; opacity: 0.5; z-index: -1;
+        }
+        .orb {
+            position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.35; animation: floatOrb 20s infinite alternate ease-in-out;
+        }
+        .orb-1 { width: 500px; height: 500px; background: var(--bhagwa); top: -10%; left: -10%; }
+        .orb-2 { width: 600px; height: 600px; background: #9933ff; bottom: -20%; right: -10%; animation-delay: -5s; }
+        .orb-3 { width: 400px; height: 400px; background: #e60000; top: 40%; left: 30%; animation-delay: -10s; }
+        @keyframes floatOrb { 0% { transform: translate(0, 0) scale(1) rotate(0deg); } 100% { transform: translate(80px, 80px) scale(1.3) rotate(20deg); } }
+
+        /* Welcome & Lock Screen */
+        #welcome-screen { position: fixed; inset: 0; z-index: 11000; background: rgba(3, 5, 10, 0.85); backdrop-filter: blur(25px); display: flex; align-items: center; justify-content: center; padding: 20px; transition: opacity 0.5s ease-in-out; }
+        .welcome-glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(40px); border: 1px solid rgba(255, 153, 51, 0.2); box-shadow: 0 30px 80px -10px rgba(255, 153, 51, 0.15); }
+        .hero-text-gradient { background: linear-gradient(135deg, #ffffff 40%, var(--bhagwa)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
+        /* Premium UI Elements */
+        .glass-card { background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(25px); border: 1px solid rgba(255, 153, 51, 0.15); border-radius: 28px; box-shadow: inset 0 0 20px rgba(255,255,255,0.02), 0 10px 30px rgba(0,0,0,0.5); }
+        .m-input { background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 153, 51, 0.2); border-radius: 14px; padding: 14px; width: 100%; color: white; outline: none; transition: all 0.3s; box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);}
+        .m-input:focus { border-color: var(--bhagwa); box-shadow: 0 0 15px rgba(255, 153, 51, 0.2), inset 0 2px 10px rgba(0,0,0,0.5); }
+        .btn-bhagwa { background: linear-gradient(135deg, var(--bhagwa), var(--bhagwa-dark)); color: white; font-weight: 800; text-transform: uppercase; border-radius: 16px; padding: 18px; width: 100%; cursor: pointer; border: none; box-shadow: 0 10px 30px rgba(255, 153, 51, 0.3); transition: all 0.3s; }
+        .btn-bhagwa:hover { box-shadow: 0 15px 40px rgba(255, 153, 51, 0.5); transform: translateY(-2px); }
+        .btn-bhagwa:active { transform: scale(0.97); }
+        
+        /* Exact Original Receipt CSS */
         #receipt-render { width: 210mm; min-height: 297mm; background: white; color: #0f172a; padding: 15mm; border: 10px solid var(--bhagwa); box-sizing: border-box; margin: 0 auto; position: relative; }
         .stamp { position: absolute; top: 12%; right: 8%; width: 140px; height: 140px; border: 6px solid; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 28px; transform: rotate(-20deg); opacity: 0.2; }
-        .active-tab { background: var(--bhagwa) !important; color: white !important; }
-        .locked-screen { pointer-events: none; filter: grayscale(1) blur(8px); opacity: 0.3; }
+        
+        .active-tab { background: var(--bhagwa) !important; color: white !important; box-shadow: 0 5px 15px rgba(255, 153, 51, 0.4); }
+        .locked-screen { pointer-events: none; filter: grayscale(1) blur(10px); opacity: 0.2; }
         .warning-text { color: #e11d48; font-weight: 900; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* Custom Scrollbar for DB List */
         #dbList::-webkit-scrollbar { width: 4px; }
-        #dbList::-webkit-scrollbar-thumb { background: #ff9933; border-radius: 10px; }
+        #dbList::-webkit-scrollbar-thumb { background: var(--bhagwa); border-radius: 10px; }
+
+        /* Custom Modal Animation */
+        @keyframes popModal { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+        .animate-pop { animation: popModal 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+
+        /* Hidden PDF Renderers */
+        #hidden-receipt-wrapper, #hidden-statement-wrapper { position: fixed; top: 0; left: 0; opacity: 0.01; z-index: -100; pointer-events: none; display: none; justify-content: center; width: 100%; }
+        #statement-render { width: 210mm; min-height: 297mm; background: white; color: #0f172a; padding: 15mm; border: 10px solid #1e293b; position: relative; font-family: sans-serif; box-sizing: border-box; }
     </style>
 </head>
 <body>
 
+<div class="bg-aurora">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+</div>
+
+<div id="custom-modal" class="fixed inset-0 bg-black/80 backdrop-blur-xl z-[99999] hidden flex-col items-center justify-center p-4 transition-opacity">
+    <div class="glass-card p-8 max-w-sm w-full text-center animate-pop" id="cm-card">
+        <div id="cm-icon" class="mb-6 flex justify-center"></div>
+        <h2 id="cm-title" class="text-2xl font-black uppercase tracking-widest mb-2">Title</h2>
+        <p id="cm-msg" class="text-sm text-white/70 font-medium mb-8 leading-relaxed">Message</p>
+        
+        <div id="cm-alert-btn" class="hidden">
+            <button onclick="closeCustomModal()" id="cm-ack-btn" class="w-full py-4 bg-white/10 hover:bg-white/20 rounded-xl font-black text-white uppercase tracking-widest transition">Acknowledge</button>
+        </div>
+        
+        <div id="cm-confirm-btns" class="hidden grid grid-cols-2 gap-4">
+            <button onclick="closeCustomModal()" class="py-4 bg-white/5 hover:bg-white/10 rounded-xl font-black text-white/50 uppercase tracking-widest transition">Cancel</button>
+            <button id="cm-proceed-btn" class="py-4 bg-rose-500/20 hover:bg-rose-500 text-rose-500 hover:text-white rounded-xl font-black uppercase tracking-widest transition shadow-[0_0_15px_rgba(244,63,94,0.2)]">Proceed</button>
+        </div>
+    </div>
+</div>
+
 <div id="welcome-screen">
     <div class="welcome-glass p-10 md:p-14 rounded-[40px] text-center max-w-lg w-full mx-4 border-t-4 border-[#ff9933] relative overflow-hidden">
-        <img src="https://i.ibb.co/C30Ybjck/PT-20250224-170650-0000.png" class="w-32 mx-auto mb-10 rounded-3xl border-2 border-[#ff9933]/60 shadow-2xl shadow-[#ff9933]/30 relative z-10" crossorigin="anonymous">
+        <img src="https://i.ibb.co/C30Ybjck/PT-20250224-170650-0000.png" class="w-32 mx-auto mb-10 rounded-3xl border-2 border-[#ff9933]/60 shadow-2xl shadow-[#ff9933]/50 relative z-10" crossorigin="anonymous">
         <h1 class="text-5xl font-black uppercase tracking-tighter mb-3 hero-text-gradient relative z-10 italic">Patel Traders</h1>
-        <p class="text-[#ff9933] font-bold text-sm tracking-[6px] uppercase mb-8 relative z-10">Master Admin Hub</p>
-        <button onclick="enterSystem()" class="group relative w-full py-5 bg-gradient-to-r from-[#ff9933] to-[#cc5500] rounded-2xl overflow-hidden shadow-[0_20px_40px_-15px_rgba(255,153,51,0.5)] transition-all hover:scale-[1.02] active:scale-[0.98] z-10 cursor-pointer">
-            <span class="relative z-10 font-black uppercase text-sm tracking-[3px] flex items-center justify-center gap-4">
-                Enter Admin Vault
+        <p class="text-[#ff9933] font-bold text-sm tracking-[6px] uppercase mb-8 relative z-10">Quantum Admin Vault</p>
+        <button onclick="initializeSystem()" class="group relative w-full py-5 bg-gradient-to-r from-[#ff9933] to-[#cc5500] rounded-2xl overflow-hidden shadow-[0_20px_40px_-15px_rgba(255,153,51,0.6)] transition-all hover:scale-[1.02] active:scale-[0.98] z-10 cursor-pointer border border-[#ff9933]/50">
+            <span class="relative z-10 font-black uppercase text-sm tracking-[3px] flex items-center justify-center gap-4 text-white">
+                Initialize System
             </span>
         </button>
-        <p class="text-white/20 text-[9px] mt-8 uppercase font-bold tracking-widest relative z-10">Digitally Encrypted System</p>
+        <p class="text-white/30 text-[9px] mt-8 uppercase font-bold tracking-widest relative z-10">Level 9 Encrypted Network</p>
     </div>
 </div>
 
-<div id="security-lock" class="fixed inset-0 bg-[#080a0f] z-[9999] flex-col items-center justify-center" style="display: none;">
+<div id="security-lock" class="fixed inset-0 bg-black/80 backdrop-blur-2xl z-[9999] flex-col items-center justify-center" style="display: none;">
     <div class="text-center mb-8">
-        <img src="https://i.ibb.co/C30Ybjck/PT-20250224-170650-0000.png" class="w-20 mx-auto mb-4 rounded-2xl border-2 border-[#ff9933]" crossorigin="anonymous">
-        <h2 id="lockStatus" class="text-xl font-black uppercase text-white tracking-widest">Admin Vault</h2>
-        <p id="lockMsg" class="text-white/30 text-[10px] mt-2 font-bold italic">Enter Master PIN</p>
+        <div class="w-24 h-24 mx-auto mb-4 bg-[#0f172a] rounded-full flex items-center justify-center border-4 border-[#ff9933] shadow-[0_0_30px_rgba(255,153,51,0.4)]">
+            <svg class="w-10 h-10 text-[#ff9933]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+        </div>
+        <h2 id="lockStatus" class="text-2xl font-black uppercase text-white tracking-widest">Vault Locked</h2>
+        <p id="lockMsg" class="text-[#ff9933] text-[12px] mt-2 font-bold tracking-[3px] uppercase">Awaiting Master PIN</p>
     </div>
-    <div id="pinDots" class="flex gap-4 mb-10"><div class="w-4 h-4 rounded-full border-2 border-white/20"></div><div class="w-4 h-4 rounded-full border-2 border-white/20"></div><div class="w-4 h-4 rounded-full border-2 border-white/20"></div><div class="w-4 h-4 rounded-full border-2 border-white/20"></div></div>
-    <div id="numpad" class="grid grid-cols-3 gap-4 w-full max-w-[280px]">
-        <script>for(let i=1;i<=9;i++) document.write(`<button onclick="pressPin('${i}')" class="py-5 glass-card font-black text-2xl text-white rounded-2xl active:bg-[#ff9933] transition">${i}</button>`)</script>
-        <button onclick="clearPin()" class="py-5 text-rose-500 font-bold hover:bg-rose-500/10 rounded-2xl transition">CLR</button>
-        <button onclick="pressPin('0')" class="py-5 glass-card font-black text-2xl text-white rounded-2xl active:bg-[#ff9933] transition">0</button>
+    <div id="pinDots" class="flex gap-5 mb-12"><div class="w-5 h-5 rounded-full border-2 border-white/20"></div><div class="w-5 h-5 rounded-full border-2 border-white/20"></div><div class="w-5 h-5 rounded-full border-2 border-white/20"></div><div class="w-5 h-5 rounded-full border-2 border-white/20"></div></div>
+    <div id="numpad" class="grid grid-cols-3 gap-5 w-full max-w-[300px]">
+        <script>for(let i=1;i<=9;i++) document.write(`<button onclick="pressPin('${i}')" class="py-6 glass-card font-black text-3xl text-white rounded-3xl hover:bg-white/10 active:bg-[#ff9933] transition shadow-lg">${i}</button>`)</script>
+        <button onclick="clearPin()" class="py-6 text-rose-500 font-bold hover:bg-rose-500/20 rounded-3xl transition tracking-widest text-sm">CLR</button>
+        <button onclick="pressPin('0')" class="py-6 glass-card font-black text-3xl text-white rounded-3xl hover:bg-white/10 active:bg-[#ff9933] transition shadow-lg">0</button>
     </div>
 </div>
 
-<div id="admin-content" class="p-4 md:p-8 hidden">
-    <div class="max-w-7xl mx-auto">
-        <div class="flex justify-between items-center mb-8">
-            <h1 class="text-2xl font-black italic uppercase tracking-tighter">Admin <span class="text-[#ff9933]">Hub</span></h1>
-            <button onclick="window.location.reload()" class="px-5 py-2 bg-rose-500/10 rounded-xl text-[10px] font-black uppercase text-rose-500 italic hover:bg-rose-500/20 transition">Lock Vault</button>
+
+<div id="view-dashboard" class="p-4 md:p-8 hidden relative z-10 min-h-screen">
+    <div class="max-w-[90rem] mx-auto">
+        <div class="flex justify-between items-center mb-8 bg-white/5 p-4 md:p-6 rounded-3xl border border-white/10 backdrop-blur-md">
+            <div class="flex items-center gap-4">
+                <img src="https://i.ibb.co/C30Ybjck/PT-20250224-170650-0000.png" class="w-12 h-12 rounded-xl shadow-lg border border-[#ff9933]/50" crossorigin="anonymous">
+                <div>
+                    <h1 class="text-2xl font-black italic uppercase tracking-tighter">Admin <span class="text-[#ff9933]">Dashboard</span></h1>
+                    <div class="flex items-center gap-2"><div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div><p class="text-[9px] text-emerald-500 font-bold uppercase tracking-widest">Network Secure</p></div>
+                </div>
+            </div>
+            <button onclick="window.location.reload()" class="px-6 py-3 bg-rose-500/10 rounded-xl text-[10px] font-black uppercase text-rose-500 border border-rose-500/30 hover:bg-rose-500 hover:text-white transition shadow-[0_0_15px_rgba(225,29,72,0.2)]">LOCK VAULT</button>
         </div>
 
-        <div class="flex flex-col lg:flex-row gap-8">
-            <div class="w-full lg:w-1/3 space-y-6">
-                <div class="glass-card p-6 border-t-4 border-[#ff9933]">
-                    <div class="flex gap-2 mb-6 bg-black/40 p-1 rounded-xl">
-                        <button onclick="setBillMode('PAID')" id="mP" class="w-1/2 py-3 rounded-lg font-black text-[10px] active-tab">PAID BILL</button>
-                        <button onclick="setBillMode('UNPAID')" id="mU" class="w-1/2 py-3 rounded-lg font-black text-[10px] text-white/50">DUE (UNPAID)</button>
-                    </div>
-                    <div class="space-y-3">
-                        <input type="text" id="inName" oninput="sync()" placeholder="Customer Name" class="m-input">
-                        <input type="tel" id="inPhone" oninput="sync()" placeholder="10-Digit Mobile Number" class="m-input" maxlength="10">
-                        <input type="text" id="inItem" oninput="sync()" placeholder="Furniture Item (e.g., Sofa Set)" class="m-input">
-                        <div class="flex gap-3">
-                            <input type="number" id="inAmt" oninput="sync()" placeholder="Price (₹)" class="m-input w-1/2">
-                            <input type="number" id="inDisc" oninput="sync()" placeholder="Discount (₹)" class="m-input w-1/2">
-                        </div>
-                        <select id="inWarranty" onchange="sync()" class="m-input"><option>No Warranty</option><option>6 Months</option><option>1 Year</option><option>5 Years</option></select>
-                        <textarea id="inDetail" oninput="sync()" placeholder="Details / Specs (Color, Size...)" class="m-input h-14"></textarea>
-                        <input type="text" id="inPostDate" oninput="sync()" placeholder="Due Date (DD/MM/YYYY)" class="m-input" style="display:none">
-                    </div>
-                    <button onclick="saveAndPrint()" id="genBtn" class="btn-bhagwa mt-6 italic">Generate & Save Bill</button>
-                </div>
+        <h2 class="text-xl font-black uppercase text-white tracking-widest mb-4 flex items-center gap-3">
+            <svg class="w-6 h-6 text-[#ff9933]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+            Sales Records
+        </h2>
 
-                <div class="glass-card p-6 border-t-4 border-blue-500">
-                    <h2 class="text-[10px] font-black uppercase text-blue-400 mb-4 tracking-widest">Cloud Database Viewer</h2>
-                    <div class="grid grid-cols-2 gap-2 mb-4">
-                        <button onclick="fetchCloud('PAID')" class="py-3 bg-emerald-500/10 text-emerald-500 rounded-xl font-bold text-[9px] uppercase border border-emerald-500/20 hover:bg-emerald-500/20 transition">Paid History</button>
-                        <button onclick="fetchCloud('UNPAID')" class="py-3 bg-rose-500/10 text-rose-500 rounded-xl font-bold text-[9px] uppercase border border-rose-500/20 hover:bg-rose-500/20 transition">Unpaid Dues</button>
-                    </div>
-                    <div id="dbList" class="max-h-[250px] overflow-y-auto space-y-2 pr-2">
-                        <p class="text-center text-white/20 text-[10px] italic py-4">Select an option to load records...</p>
-                    </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+            <div class="glass-card p-6 bg-gradient-to-br from-emerald-500/10 to-transparent border-l-4 border-l-emerald-500 relative overflow-hidden">
+                <div class="absolute -right-4 -top-4 w-24 h-24 bg-emerald-500/20 rounded-full blur-3xl"></div>
+                <p class="text-[10px] uppercase font-black text-white/50 tracking-widest mb-1 relative z-10">Total Lifetime Sales (Paid)</p>
+                <h2 id="dashTotalSales" class="text-4xl font-black text-emerald-400 tracking-tighter relative z-10 animate-pulse">₹ ---</h2>
+            </div>
+            <div class="glass-card p-6 bg-gradient-to-br from-rose-500/10 to-transparent border-l-4 border-l-rose-500 relative overflow-hidden">
+                <div class="absolute -right-4 -top-4 w-24 h-24 bg-rose-500/20 rounded-full blur-3xl"></div>
+                <p class="text-[10px] uppercase font-black text-white/50 tracking-widest mb-1 relative z-10">Pending Payments (Unpaid)</p>
+                <h2 id="dashTotalDue" class="text-4xl font-black text-rose-400 tracking-tighter relative z-10 animate-pulse">₹ ---</h2>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+            
+            <div onclick="openGenerator()" class="glass-card p-8 border-t-4 border-[#ff9933] flex flex-col items-center justify-center text-center cursor-pointer group hover:bg-[#ff9933]/10 transition-all hover:scale-[1.02] shadow-[0_0_30px_rgba(255,153,51,0.1)]">
+                <div class="w-20 h-20 bg-[#ff9933]/20 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <svg class="w-10 h-10 text-[#ff9933]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
+                </div>
+                <h2 class="text-2xl font-black uppercase text-white tracking-widest mb-2">Create Invoice</h2>
+                <p class="text-xs text-white/50 font-bold uppercase">Launch Receipt Generator Engine</p>
+            </div>
+
+            <div class="glass-card p-6 md:p-8 border-t-4 border-purple-500">
+                <h2 class="text-xs font-black uppercase text-purple-400 mb-6 tracking-widest flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg> Sales Analytics</h2>
+                <div class="flex gap-3 mb-4">
+                    <select id="salesMonth" class="m-input text-xs w-1/2">
+                        <option value="ALL">All Months</option><option value="01">January</option><option value="02">February</option><option value="03">March</option><option value="04">April</option><option value="05">May</option><option value="06">June</option><option value="07">July</option><option value="08">August</option><option value="09">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option>
+                    </select>
+                    <select id="salesYear" class="m-input text-xs w-1/2">
+                        <option value="ALL">All Years</option><option value="2026">2026</option><option value="2027">2027</option>
+                    </select>
+                </div>
+                <button onclick="downloadSalesStatement()" id="btnSales" class="w-full py-4 bg-gradient-to-r from-purple-600 to-purple-800 text-white rounded-xl font-black uppercase text-xs shadow-[0_10px_20px_rgba(168,85,247,0.3)] hover:scale-[1.02] transition">Extract Report PDF</button>
+            </div>
+
+            <div class="glass-card p-6 md:p-8 border-t-4 border-blue-500">
+                <h2 class="text-xs font-black uppercase text-blue-400 mb-6 tracking-widest flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg> Cloud DB Manager</h2>
+                <div class="grid grid-cols-2 gap-3 mb-6">
+                    <button onclick="fetchCloud('PAID')" class="py-4 bg-emerald-500/10 text-emerald-400 rounded-xl font-black text-[10px] uppercase border border-emerald-500/30 hover:bg-emerald-500 hover:text-white transition">Paid</button>
+                    <button onclick="fetchCloud('UNPAID')" class="py-4 bg-rose-500/10 text-rose-400 rounded-xl font-black text-[10px] uppercase border border-rose-500/30 hover:bg-rose-500 hover:text-white transition">Unpaid</button>
+                </div>
+                <div id="dbList" class="max-h-[200px] overflow-y-auto space-y-3 pr-2">
+                    <p class="text-center text-white/30 text-xs italic py-4 border border-dashed border-white/10 rounded-xl">Select a category to decrypt...</p>
                 </div>
             </div>
 
-            <div class="w-full lg:w-2/3 bg-white/5 rounded-[40px] p-6 flex justify-center overflow-x-auto shadow-inner border border-white/5">
+        </div>
+    </div>
+</div>
+
+
+<div id="view-generator" class="p-4 md:p-8 hidden relative z-10 min-h-screen">
+    <div class="max-w-[90rem] mx-auto">
+        <div class="flex justify-between items-center mb-8 bg-white/5 p-4 md:p-6 rounded-3xl border border-white/10 backdrop-blur-md">
+            <h1 class="text-2xl font-black italic uppercase tracking-tighter text-white flex items-center gap-3">
+                <button onclick="closeGenerator()" class="p-2 bg-white/10 rounded-lg hover:bg-[#ff9933] transition" title="Back to Dashboard">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                Invoice <span class="text-[#ff9933]">Engine</span>
+            </h1>
+        </div>
+
+        <div class="flex flex-col xl:flex-row gap-8">
+            <div class="w-full xl:w-5/12 space-y-6">
+                <div class="glass-card p-6 md:p-8 border-t-4 border-[#ff9933]">
+                    <div class="flex gap-2 mb-6 bg-black/50 p-1.5 rounded-2xl">
+                        <button onclick="setBillMode('PAID')" id="mP" class="w-1/2 py-3.5 rounded-xl font-black text-[10px] active-tab transition">PAID BILL</button>
+                        <button onclick="setBillMode('UNPAID')" id="mU" class="w-1/2 py-3.5 rounded-xl font-black text-[10px] text-white/50 transition">DUE (UNPAID)</button>
+                    </div>
+                    <div class="space-y-4">
+                        <input type="text" id="inName" oninput="sync()" placeholder="Customer Name" class="m-input text-sm">
+                        <input type="tel" id="inPhone" oninput="sync()" placeholder="10-Digit Mobile Number" class="m-input text-sm" maxlength="10">
+                        <input type="text" id="inItem" oninput="sync()" placeholder="Furniture Item (e.g., Luxury Sofa Set)" class="m-input text-sm">
+                        <div class="flex gap-4">
+                            <input type="number" id="inAmt" oninput="sync()" placeholder="Price (₹)" class="m-input text-sm w-1/2">
+                            <input type="number" id="inDisc" oninput="sync()" placeholder="Discount (₹)" class="m-input text-sm w-1/2">
+                        </div>
+                        <select id="inWarranty" onchange="sync()" class="m-input text-sm text-white/80"><option>No Warranty</option><option>6 Months</option><option>1 Year</option><option>5 Years</option></select>
+                        <textarea id="inDetail" oninput="sync()" placeholder="Details / Specs (Color, Material...)" class="m-input text-sm h-20 resize-none"></textarea>
+                        <input type="text" id="inPostDate" oninput="sync()" placeholder="Due Date (DD/MM/YYYY)" class="m-input text-sm" style="display:none">
+                    </div>
+                    <button onclick="saveAndPrint()" id="genBtn" class="btn-bhagwa mt-8 text-sm">Generate & Save Bill</button>
+                </div>
+            </div>
+
+            <div class="w-full xl:w-7/12 bg-white/5 rounded-[40px] p-6 md:p-10 flex justify-center overflow-x-auto shadow-[inset_0_0_50px_rgba(0,0,0,0.8)] border border-white/10 backdrop-blur-sm">
                 <div id="receipt-render">
                     <div id="stP" class="stamp" style="color: #10b981; border-color: #10b981;">PAID</div>
                     <div id="stU" class="stamp" style="display:none; color: #ef4444; border-color: #ef4444;">DUE</div>
@@ -137,15 +262,15 @@
                             <tr>
                                 <td>
                                     <span id="vItem">ITEM</span><br>
-                                    <small id="vDetail" class="text-xs normal-case text-slate-400 font-bold"></small><br>
-                                    <span id="vWar" class="text-[10px] text-orange-500">None</span>
+                                    <small id="vDetail" class="text-xs normal-case text-slate-500 font-bold"></small><br>
+                                    <span id="vWar" class="text-[10px] text-orange-600">None</span>
                                 </td>
                                 <td id="vBase" class="text-right">₹ 0</td>
                             </tr>
                         </table>
                     </div>
 
-                    <div class="mt-8 p-6 bg-slate-900 rounded-3xl flex justify-between items-center text-white shadow-lg">
+                    <div class="mt-8 p-6 bg-slate-900 rounded-3xl flex justify-between items-center shadow-lg text-white">
                         <div>
                             <p class="text-[9px] text-white/40 font-black uppercase tracking-widest">Net Payable</p>
                             <h2 id="vTotal" class="text-5xl font-black text-[#ff9933]">₹ 0</h2>
@@ -158,7 +283,7 @@
                     <div class="mt-12 pt-6 border-t border-dashed border-slate-300 text-center">
                         <h3 class="text-xs font-black text-slate-800 uppercase tracking-[5px] mb-2">Furniture Shop</h3>
                         <p class="warning-text">⚠️ RECEIPT WILL BE INVALID IF MODIFIED</p>
-                        <p class="text-[8px] font-bold text-slate-400 mt-1 uppercase tracking-tighter">Digitally Generated by Patel Traders System</p>
+                        <p class="text-[8px] font-bold text-slate-500 mt-1 uppercase tracking-tighter">Digitally Generated by Patel Traders System</p>
                     </div>
                 </div>
             </div>
@@ -166,59 +291,243 @@
     </div>
 </div>
 
+<div id="hidden-receipt-wrapper"></div> 
+
+<div id="hidden-statement-wrapper">
+    <div id="statement-render">
+        <div style="display:flex; justify-content:space-between; border-bottom:4px solid #0f172a; padding-bottom:20px; margin-bottom:30px; align-items:center;">
+            <div>
+                <h1 style="font-size:32px; font-weight:900; margin:0; text-transform:uppercase;">Sales Statement</h1>
+                <p style="font-size:12px; color:#64748b; font-weight:bold; margin-top:5px; text-transform:uppercase;">Period: <span id="sMonthYear" style="color:#0f172a;">--</span></p>
+            </div>
+            <div style="text-align:right;">
+                <h2 style="font-size:16px; font-weight:900; margin:0; text-transform:uppercase;">Patel Traders</h2>
+                <p style="font-size:10px; color:#ff9933; font-weight:bold; letter-spacing:2px; margin:0; text-transform:uppercase;">Furniture Shop</p>
+                <p style="font-size:10px; color:#64748b; margin-top:4px;">Mob: +91 9565697314</p>
+            </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; margin-bottom:30px; background:#f8fafc; padding:20px; border-radius:16px; border:1px solid #e2e8f0;">
+            <div>
+                <p style="font-size:10px; color:#64748b; font-weight:bold; text-transform:uppercase; margin:0;">Total Revenue (PAID)</p>
+                <h2 id="sTotalRevenue" style="font-size:28px; font-weight:900; color:#10b981; margin:5px 0 0 0;">₹0</h2>
+            </div>
+            <div style="text-align:right;">
+                <p style="font-size:10px; color:#64748b; font-weight:bold; text-transform:uppercase; margin:0;">Total Pending (DUE)</p>
+                <h2 id="sTotalDue" style="font-size:28px; font-weight:900; color:#ef4444; margin:5px 0 0 0;">₹0</h2>
+            </div>
+        </div>
+
+        <table style="width:100%; text-align:left; font-size:11px; text-transform:uppercase; border-collapse:collapse;">
+            <thead style="border-bottom:2px solid #cbd5e1; color:#475569;">
+                <tr>
+                    <th style="padding:10px 5px;">Date</th>
+                    <th style="padding:10px 5px;">Invoice</th>
+                    <th style="padding:10px 5px;">Customer</th>
+                    <th style="padding:10px 5px;">Item</th>
+                    <th style="padding:10px 5px; text-align:right;">Amount</th>
+                    <th style="padding:10px 5px; text-align:right;">Status</th>
+                </tr>
+            </thead>
+            <tbody id="sTableBody" style="font-weight:bold; color:#1e293b;">
+                </tbody>
+        </table>
+
+        <div style="margin-top:50px; padding-top:20px; border-top:1px dashed #cbd5e1; text-align:center;">
+            <p style="font-size:9px; font-weight:bold; color:#64748b; text-transform:uppercase; letter-spacing:2px; margin:0;">Digitally Generated Analytics Report</p>
+            <p style="font-size:8px; color:#ef4444; font-weight:bold; margin-top:5px; text-transform:uppercase;">Confidential Admin Document</p>
+        </div>
+    </div>
+</div>
+
 <script>
-    // 🔥 LIVE URL & MASTER TOKEN CONFIGURED
     const CONFIG = { 
         URL: "https://script.google.com/macros/s/AKfycby2TFRp3qtRvLRPkwIpdCOfAyhpPuWk9idCLeoRAcybljR4477ksGIu5Zijx_OdaF_C/exec", 
         PIN: "7314",
         TOKEN: "PT_ULTRA_7314_SANJAY_2026"
     };
     
-    let currentPin = "", attempts = 0, billMode = "PAID", dbRecords = [];
+    // 🧠 SYSTEM CACHE LOGIC
+    let currentPin = "", 
+        attempts = parseInt(localStorage.getItem('pt_admin_pin_attempts') || '0'), 
+        billMode = "PAID", 
+        dbRecords = [],
+        lockTimerInterval,
+        confirmActionCallback = null;
 
-    // Access Logic
-    function enterSystem() {
+    // Execute immediately on load
+    window.addEventListener('DOMContentLoaded', () => {
+        if(localStorage.getItem('pt_admin_welcome_seen') === 'true') {
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('security-lock').style.display = 'flex';
+            checkLockoutState(); 
+        }
+    });
+
+    function initializeSystem() {
+        localStorage.setItem('pt_admin_welcome_seen', 'true'); 
         document.getElementById('welcome-screen').style.opacity = '0';
         setTimeout(() => {
             document.getElementById('welcome-screen').style.display = 'none';
             document.getElementById('security-lock').style.display = 'flex';
+            checkLockoutState(); 
         }, 500);
     }
 
-    function pressPin(n) {
-        if(currentPin.length < 4) {
-            currentPin += n; updateDots();
-            if(currentPin === CONFIG.PIN) {
-                document.getElementById('security-lock').style.display = 'none';
-                document.getElementById('admin-content').classList.remove('hidden');
+    // 🌟 CUSTOM MODAL SYSTEM (Replaces alert & confirm)
+    function showCustomAlert(type, title, msg) {
+        document.getElementById('cm-title').innerText = title;
+        document.getElementById('cm-msg').innerText = msg;
+        document.getElementById('cm-alert-btn').classList.remove('hidden');
+        document.getElementById('cm-confirm-btns').classList.add('hidden');
+        document.getElementById('cm-card').className = `glass-card p-8 max-w-sm w-full text-center animate-pop border-t-4 ${type==='success'?'border-emerald-500': type==='warning'?'border-[#ff9933]':'border-rose-500'}`;
+        
+        let iconHTML = '';
+        if(type === 'success') iconHTML = `<div class="w-16 h-16 bg-emerald-500/20 text-emerald-500 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(16,185,129,0.3)]"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg></div>`;
+        else if(type === 'warning') iconHTML = `<div class="w-16 h-16 bg-[#ff9933]/20 text-[#ff9933] rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(255,153,51,0.3)]"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg></div>`;
+        else iconHTML = `<div class="w-16 h-16 bg-rose-500/20 text-rose-500 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(244,63,94,0.3)]"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg></div>`;
+        
+        document.getElementById('cm-icon').innerHTML = iconHTML;
+        
+        const modal = document.getElementById('custom-modal');
+        modal.style.display = 'flex';
+        setTimeout(() => modal.classList.remove('opacity-0'), 10);
+    }
+
+    function showCustomConfirm(title, msg, callback) {
+        document.getElementById('cm-title').innerText = title;
+        document.getElementById('cm-msg').innerText = msg;
+        document.getElementById('cm-alert-btn').classList.add('hidden');
+        document.getElementById('cm-confirm-btns').classList.remove('hidden');
+        document.getElementById('cm-card').className = `glass-card p-8 max-w-sm w-full text-center animate-pop border-t-4 border-rose-500`;
+        
+        document.getElementById('cm-icon').innerHTML = `<div class="w-16 h-16 bg-rose-500/20 text-rose-500 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(244,63,94,0.3)]"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg></div>`;
+        
+        confirmActionCallback = callback;
+        document.getElementById('cm-proceed-btn').onclick = () => { closeCustomModal(); if(confirmActionCallback) confirmActionCallback(); };
+        
+        const modal = document.getElementById('custom-modal');
+        modal.style.display = 'flex';
+        setTimeout(() => modal.classList.remove('opacity-0'), 10);
+    }
+
+    function closeCustomModal() {
+        const modal = document.getElementById('custom-modal');
+        modal.classList.add('opacity-0');
+        setTimeout(() => { modal.style.display = 'none'; confirmActionCallback = null; }, 300);
+    }
+
+    // View Navigation Logic
+    function openGenerator() {
+        document.getElementById('view-dashboard').classList.add('hidden');
+        document.getElementById('view-generator').classList.remove('hidden');
+        window.scrollTo(0,0);
+    }
+    function closeGenerator() {
+        document.getElementById('view-generator').classList.add('hidden');
+        document.getElementById('view-dashboard').classList.remove('hidden');
+        window.scrollTo(0,0);
+    }
+
+    function checkLockoutState() {
+        const lockoutTime = localStorage.getItem('pt_admin_lockout_time');
+        if (lockoutTime) {
+            const remainingSecs = Math.floor((parseInt(lockoutTime) - Date.now()) / 1000);
+            if (remainingSecs > 0) {
+                startLockTimer(remainingSecs); 
+            } else {
+                localStorage.removeItem('pt_admin_lockout_time');
+                localStorage.setItem('pt_admin_pin_attempts', '0');
                 attempts = 0;
-            } else if(currentPin.length === 4) {
-                attempts++;
-                if(attempts >= 5) lockSystem();
-                else { alert(`❌ Incorrect PIN! ${5 - attempts} attempts remaining.`); clearPin(); }
             }
         }
     }
 
-    function lockSystem() {
-        let timer = 300;
+    function pressPin(n) {
+        if(localStorage.getItem('pt_admin_lockout_time') && parseInt(localStorage.getItem('pt_admin_lockout_time')) > Date.now()) return;
+
+        if(currentPin.length < 4) {
+            currentPin += n; updateDots();
+            
+            if(currentPin === CONFIG.PIN) {
+                document.getElementById('security-lock').style.display = 'none';
+                document.getElementById('view-dashboard').classList.remove('hidden');
+                attempts = 0;
+                localStorage.setItem('pt_admin_pin_attempts', '0');
+                localStorage.removeItem('pt_admin_lockout_time');
+                
+                fetch(`${CONFIG.URL}?action=getBills&token=${CONFIG.TOKEN}&user=admin`)
+                    .then(res => res.json())
+                    .then(data => { if(!data.error) { dbRecords = data; updateDashboardTotals(); } })
+                    .catch(e => console.log("Silent Sync Failed"));
+
+            } else if(currentPin.length === 4) {
+                attempts++;
+                localStorage.setItem('pt_admin_pin_attempts', attempts.toString()); 
+                
+                if(attempts >= 5) {
+                    const lockUntil = Date.now() + (300 * 1000);
+                    localStorage.setItem('pt_admin_lockout_time', lockUntil.toString());
+                    startLockTimer(300);
+                } else { 
+                    showCustomAlert('error', 'Security Alert', `Incorrect PIN! ${5 - attempts} attempts remaining.`);
+                    clearPin(); 
+                }
+            }
+        }
+    }
+
+    function startLockTimer(secondsLeft) {
+        let timer = secondsLeft;
         document.getElementById('numpad').classList.add('locked-screen');
         document.getElementById('lockStatus').innerText = "SYSTEM LOCKED";
-        const interval = setInterval(() => {
-            document.getElementById('lockMsg').innerText = `Wait: ${Math.floor(timer/60)}m ${timer%60}s`;
+        document.getElementById('lockStatus').style.color = "#e11d48";
+        
+        clearInterval(lockTimerInterval); 
+        
+        document.getElementById('lockMsg').innerText = `Security Timeout: ${Math.floor(timer/60)}m ${timer%60}s`;
+        document.getElementById('lockMsg').style.color = "#e11d48";
+
+        lockTimerInterval = setInterval(() => {
             timer--;
-            if(timer < 0) { clearInterval(interval); document.getElementById('numpad').classList.remove('locked-screen'); document.getElementById('lockStatus').innerText = "Admin Vault"; document.getElementById('lockMsg').innerText = "Enter Master PIN"; attempts = 0; clearPin(); }
+            document.getElementById('lockMsg').innerText = `Security Timeout: ${Math.floor(timer/60)}m ${timer%60}s`;
+            
+            if(timer <= 0) { 
+                clearInterval(lockTimerInterval); 
+                localStorage.removeItem('pt_admin_lockout_time');
+                localStorage.setItem('pt_admin_pin_attempts', '0');
+                attempts = 0;
+                
+                document.getElementById('numpad').classList.remove('locked-screen'); 
+                document.getElementById('lockStatus').innerText = "Vault Locked"; 
+                document.getElementById('lockStatus').style.color = "#ffffff";
+                document.getElementById('lockMsg').innerText = "Awaiting Master PIN"; 
+                document.getElementById('lockMsg').style.color = "#ff9933";
+                clearPin(); 
+            }
         }, 1000);
     }
 
-    function updateDots() { document.querySelectorAll('#pinDots div').forEach((d, i) => d.style.background = i < currentPin.length ? '#ff9933' : 'transparent'); }
+    function updateDots() { document.querySelectorAll('#pinDots div').forEach((d, i) => { d.style.background = i < currentPin.length ? '#ff9933' : 'transparent'; d.style.borderColor = i < currentPin.length ? '#ff9933' : 'rgba(255,255,255,0.2)'; }); }
     function clearPin() { currentPin = ""; updateDots(); }
 
-    // Bill Generation Logic
+    function updateDashboardTotals() {
+        if(!dbRecords || dbRecords.length === 0) return;
+        
+        document.getElementById('dashTotalSales').classList.remove('animate-pulse');
+        document.getElementById('dashTotalDue').classList.remove('animate-pulse');
+
+        const totalRev = dbRecords.reduce((sum, r) => sum + (r.status==='PAID'?parseFloat(String(r.amount).replace(/[^0-9.-]+/g,""))||0:0), 0);
+        const totalDue = dbRecords.reduce((sum, r) => sum + (r.status==='UNPAID'?parseFloat(String(r.amount).replace(/[^0-9.-]+/g,""))||0:0), 0);
+        
+        document.getElementById('dashTotalSales').innerText = "₹ " + totalRev.toLocaleString('en-IN');
+        document.getElementById('dashTotalDue').innerText = "₹ " + totalDue.toLocaleString('en-IN');
+    }
+
     function setBillMode(m) {
         billMode = m;
-        document.getElementById('mP').className = m === 'PAID' ? 'w-1/2 py-3 rounded-lg font-black text-[10px] active-tab' : 'w-1/2 py-3 rounded-lg font-black text-[10px] text-white/50';
-        document.getElementById('mU').className = m === 'UNPAID' ? 'w-1/2 py-3 rounded-lg font-black text-[10px] active-tab' : 'w-1/2 py-3 rounded-lg font-black text-[10px] text-white/50';
+        document.getElementById('mP').className = m === 'PAID' ? 'w-1/2 py-3.5 rounded-xl font-black text-[10px] active-tab transition' : 'w-1/2 py-3.5 rounded-xl font-black text-[10px] text-white/50 transition hover:bg-white/5';
+        document.getElementById('mU').className = m === 'UNPAID' ? 'w-1/2 py-3.5 rounded-xl font-black text-[10px] active-tab transition' : 'w-1/2 py-3.5 rounded-xl font-black text-[10px] text-white/50 transition hover:bg-white/5';
         document.getElementById('stP').style.display = m === 'PAID' ? 'flex' : 'none';
         document.getElementById('stU').style.display = m === 'UNPAID' ? 'flex' : 'none';
         document.getElementById('inPostDate').style.display = m === 'UNPAID' ? 'block' : 'none';
@@ -244,9 +553,12 @@
         const phone = document.getElementById('inPhone').value.trim();
         const item = document.getElementById('inItem').value.trim();
         
-        if(!name || !item || document.getElementById('vTotal').innerText === "₹ 0") return alert("❌ Please fill Customer Name, Item, and Price.");
+        if(!name || !item || document.getElementById('vTotal').innerText === "₹ 0") {
+            showCustomAlert('warning', 'Missing Info', 'Please fill Customer Name, Item, and Price.');
+            return;
+        }
         
-        document.getElementById('genBtn').innerText = "Processing Cloud Save...";
+        document.getElementById('genBtn').innerText = "Encrypting & Saving...";
         document.getElementById('genBtn').disabled = true;
         
         const inv = "PT-B-" + Date.now().toString().slice(-6);
@@ -265,70 +577,99 @@
         try {
             await fetch(CONFIG.URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) });
             
-            // Download PDF
+            document.getElementById('vInv').innerText = inv; 
             const canvas = await html2canvas(document.getElementById('receipt-render'), { scale: 2, useCORS: true });
             const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
             pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 210, 297);
             pdf.save(`${inv}.pdf`);
             
-            alert("✅ SUCCESS: Bill Generated, Saved to Cloud, and PDF Downloaded!");
-            // Reset Form optionally
-            document.getElementById('inName').value = '';
-            document.getElementById('inItem').value = '';
-            document.getElementById('inAmt').value = '';
+            showCustomAlert('success', 'Success', 'Bill Encrypted, Saved to Cloud, and PDF Downloaded!');
+            
+            // Auto Refresh the DB and Dash totals quietly
+            fetch(`${CONFIG.URL}?action=getBills&token=${CONFIG.TOKEN}&user=admin`)
+                .then(res => res.json())
+                .then(data => { if(!data.error) { dbRecords = data; updateDashboardTotals(); } });
+
+            // Reset Form and Go Back to Dashboard
+            document.getElementById('inName').value = ''; document.getElementById('inItem').value = '';
+            document.getElementById('inAmt').value = ''; document.getElementById('inDisc').value = '';
+            document.getElementById('inDetail').value = ''; document.getElementById('vInv').innerText = '#AUTO';
             sync();
-        } catch(e) { alert("❌ Error saving to cloud database."); }
+            closeGenerator();
+
+        } catch(e) { 
+            showCustomAlert('error', 'Critical Error', 'Error saving to cloud database. Please try again.');
+        }
         
         document.getElementById('genBtn').innerText = "Generate & Save Bill";
         document.getElementById('genBtn').disabled = false;
     }
 
-    // Database Management Logic
     async function fetchCloud(m) {
         const list = document.getElementById('dbList'); 
-        list.innerHTML = `<p class='text-center py-4 text-white/40 text-[9px] animate-pulse uppercase tracking-widest'>Connecting to Cloud...</p>`;
+        list.innerHTML = `<p class='text-center py-8 text-[#ff9933] text-[10px] animate-pulse uppercase tracking-[3px] font-black border border-dashed border-[#ff9933]/30 rounded-xl'>Decrypting Cloud Data...</p>`;
         try {
             const res = await fetch(`${CONFIG.URL}?action=getBills&token=${CONFIG.TOKEN}&user=admin`);
             dbRecords = await res.json();
             
-            if (dbRecords.error) { list.innerHTML = `<p class='text-rose-500 text-center text-[10px] font-bold'>Error: ${dbRecords.error}</p>`; return; }
+            if (dbRecords.error) { 
+                list.innerHTML = `<p class='text-rose-500 text-center text-xs font-black p-4 bg-rose-500/10 rounded-xl'>Access Error: ${dbRecords.error}</p>`; 
+                return; 
+            }
+
+            updateDashboardTotals();
 
             const filtered = dbRecords.filter(r => r.status === m).reverse();
             
             list.innerHTML = filtered.map(r => `
-                <div class='flex flex-col p-3 bg-white/5 rounded-xl border-l-4 mb-2 shadow-lg ${m === 'PAID' ? 'border-emerald-500' : 'border-rose-500'} hover:bg-white/10 transition'>
+                <div class='flex flex-col p-4 bg-white/5 rounded-2xl border-l-4 mb-3 shadow-[0_5px_15px_rgba(0,0,0,0.3)] backdrop-blur-md ${m === 'PAID' ? 'border-emerald-500' : 'border-rose-500'} hover:bg-white/10 transition-all hover:scale-[1.01]'>
                     <div class='flex justify-between items-start mb-3'>
                         <div>
-                            <p class='font-black text-xs text-white uppercase tracking-wider'>${r.name}</p>
-                            <p class='text-[8px] opacity-50 uppercase font-bold mt-1'>${r.invoiceno} | ${r.amount}</p>
-                            <p class='text-[8px] opacity-40 uppercase font-bold'>${r.phone || 'No Phone'}</p>
+                            <p class='font-black text-sm text-white uppercase tracking-wider'>${r.name}</p>
+                            <p class='text-[10px] text-[#ff9933] uppercase font-black mt-1 tracking-widest'>${r.invoiceno} <span class="text-white/40 px-1">|</span> <span class="${m==='PAID'?'text-emerald-400':'text-rose-400'}">${r.amount}</span></p>
+                            <p class='text-[9px] text-white/50 uppercase font-bold mt-0.5'>📱 ${r.phone || 'No Phone'} <span class="px-1">|</span> 📅 ${r.date}</p>
                         </div>
-                        <button onclick="deleteBill('${r.invoiceno}')" class='text-[10px] bg-rose-500/10 text-rose-500 px-2 py-1.5 rounded-lg hover:bg-rose-500 hover:text-white transition' title='Delete Bill permanently'>🗑️</button>
+                        <button onclick="deleteBill('${r.invoiceno}')" class='w-8 h-8 flex items-center justify-center bg-rose-500/10 text-rose-500 rounded-xl hover:bg-rose-500 hover:text-white transition shadow-lg' title='Permanently Delete'>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                        </button>
                     </div>
-                    <div class='flex gap-2 justify-between border-t border-white/5 pt-2'>
-                        <button onclick="handleSilentPDF(${dbRecords.indexOf(r)})" class='w-full text-[8px] font-black bg-white/10 px-3 py-2 rounded-lg hover:bg-[#ff9933] transition tracking-widest uppercase'>View PDF</button>
-                        ${m === 'UNPAID' ? `<button onclick="markAsPaid('${r.invoiceno}')" class='w-full text-[8px] font-black bg-emerald-500/20 text-emerald-400 px-3 py-2 rounded-lg hover:bg-emerald-500 hover:text-white transition tracking-widest uppercase'>✓ Mark Paid</button>` : ''}
+                    <div class='flex gap-3 justify-between border-t border-white/10 pt-3'>
+                        <button onclick="handleSilentPDF(${dbRecords.indexOf(r)})" class='w-full text-[9px] font-black bg-white/5 text-white/80 py-2.5 rounded-xl hover:bg-[#ff9933] hover:text-white transition tracking-[2px] uppercase shadow-md'>Preview PDF</button>
+                        ${m === 'UNPAID' ? `<button onclick="markAsPaid('${r.invoiceno}')" class='w-full text-[9px] font-black bg-emerald-500/10 text-emerald-400 py-2.5 rounded-xl hover:bg-emerald-500 hover:text-white transition tracking-[2px] uppercase shadow-md flex items-center justify-center gap-1'><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg> Mark Paid</button>` : ''}
                     </div>
-                </div>`).join('') || "<p class='text-center py-4 text-white/30 italic text-xs'>No Records Found.</p>";
-        } catch(e) { list.innerHTML = `<p class='text-rose-500 text-center text-[10px] font-bold'>❌ Error connecting to cloud!</p>`; }
+                </div>`).join('') || "<p class='text-center py-6 text-white/40 font-bold uppercase tracking-widest text-[10px] border border-dashed border-white/10 rounded-xl bg-white/5'>Database Empty / No Records</p>";
+        } catch(e) { 
+            list.innerHTML = `<p class='text-rose-500 text-center text-xs font-black p-4 bg-rose-500/10 rounded-xl'>❌ Server Connection Lost!</p>`; 
+        }
     }
 
-    async function markAsPaid(invNum) {
-        if(!confirm(`Are you sure you want to mark Invoice ${invNum} as PAID?`)) return;
-        try {
-            await fetch(CONFIG.URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ token: CONFIG.TOKEN, type: "MARK_PAID", inv: invNum, txn: "CASH_BY_ADMIN" }) });
-            alert(`✅ SUCCESS: Invoice ${invNum} has been updated to PAID.`);
-            fetchCloud('UNPAID'); // Refresh list
-        } catch(e) { alert("❌ Error updating status!"); }
+    function markAsPaid(invNum) {
+        showCustomConfirm('Secure Action', `Mark Invoice ${invNum} as fully PAID?`, async () => {
+            try {
+                await fetch(CONFIG.URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ token: CONFIG.TOKEN, type: "MARK_PAID", inv: invNum, txn: "CASH_BY_ADMIN" }) });
+                showCustomAlert('success', 'Updated', `Invoice ${invNum} synchronized as PAID in Cloud.`);
+                fetchCloud('UNPAID'); 
+            } catch(e) { 
+                showCustomAlert('error', 'Sync Error', 'Failed to synchronize with Cloud.'); 
+            }
+        });
     }
 
-    async function deleteBill(invNum) {
-        if(!confirm(`⚠️ WARNING: Are you sure you want to PERMANENTLY DELETE Invoice ${invNum}?`)) return;
-        try {
-            await fetch(CONFIG.URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ token: CONFIG.TOKEN, type: "DELETE_BILL", inv: invNum }) });
-            alert(`✅ SUCCESS: Invoice ${invNum} has been deleted.`);
-            document.getElementById('dbList').innerHTML = "<p class='text-center text-white/20 text-[10px] italic py-4'>List refreshed. Select an option above.</p>";
-        } catch(e) { alert("❌ Error deleting bill."); }
+    function deleteBill(invNum) {
+        showCustomConfirm('Critical Warning', `Permanently delete Invoice ${invNum} from Cloud Database? This cannot be undone.`, async () => {
+            try {
+                await fetch(CONFIG.URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ token: CONFIG.TOKEN, type: "DELETE_BILL", inv: invNum }) });
+                showCustomAlert('success', 'Eradicated', 'Record permanently deleted from servers.');
+                
+                // Refresh totals and list
+                fetch(`${CONFIG.URL}?action=getBills&token=${CONFIG.TOKEN}&user=admin`)
+                    .then(res => res.json())
+                    .then(data => { if(!data.error) { dbRecords = data; updateDashboardTotals(); fetchCloud(billMode); } });
+
+            } catch(e) { 
+                showCustomAlert('error', 'Failed', 'Error connecting to database for deletion.'); 
+            }
+        });
     }
 
     window.handleSilentPDF = async function(idx) {
@@ -339,6 +680,7 @@
         document.getElementById('vItem').innerText = r.item || "ITEM"; 
         document.getElementById('vDetail').innerText = r.detail || ""; 
         document.getElementById('vTotal').innerText = r.amount || "₹ 0"; 
+        
         document.getElementById('vBase').innerText = r.amount || "₹ 0"; 
         document.getElementById('vWar').innerText = "Warranty: " + (r.warranty || "None"); 
         
@@ -348,7 +690,79 @@
         document.getElementById('stP').style.display = r.status === 'PAID' ? 'flex' : 'none';
         document.getElementById('stU').style.display = r.status !== 'PAID' ? 'flex' : 'none';
         document.getElementById('vPostDisplay').innerText = r.status !== 'PAID' && r.postdate ? "DUE: " + r.postdate : "";
+        
+        // Open the generator page to show the preview
+        openGenerator();
     };
+
+    async function downloadSalesStatement() {
+        const btn = document.getElementById('btnSales');
+        btn.innerText = "Extracting Data..."; 
+        btn.disabled = true;
+        
+        try {
+            const m = document.getElementById('salesMonth').value;
+            const y = document.getElementById('salesYear').value;
+            
+            if(dbRecords.length === 0) {
+                const res = await fetch(`${CONFIG.URL}?action=getBills&token=${CONFIG.TOKEN}&user=admin`);
+                dbRecords = await res.json();
+                if(dbRecords.error) throw new Error("DB Error");
+            }
+            
+            let filtered = dbRecords;
+            if(y !== 'ALL') filtered = filtered.filter(r => r.date && r.date.includes(y));
+            if(m !== 'ALL') filtered = filtered.filter(r => {
+                if(!r.date) return false;
+                let parts = r.date.includes('/') ? r.date.split('/') : r.date.split('-');
+                return parts.length > 1 && parts[1] === m;
+            });
+            
+            if(filtered.length === 0) {
+                showCustomAlert('warning', 'No Data', 'No sales data found for the selected period.');
+                btn.innerText = "Extract Report PDF"; btn.disabled = false;
+                return;
+            }
+
+            const totalRev = filtered.reduce((sum, r) => sum + (r.status==='PAID'?parseFloat(String(r.amount).replace(/[^0-9.-]+/g,""))||0:0), 0);
+            const totalDue = filtered.reduce((sum, r) => sum + (r.status==='UNPAID'?parseFloat(String(r.amount).replace(/[^0-9.-]+/g,""))||0:0), 0);
+            
+            document.getElementById('sTotalRevenue').innerText = "₹" + totalRev.toLocaleString('en-IN');
+            document.getElementById('sTotalDue').innerText = "₹" + totalDue.toLocaleString('en-IN');
+            
+            let monthName = document.getElementById('salesMonth').options[document.getElementById('salesMonth').selectedIndex].text;
+            document.getElementById('sMonthYear').innerText = `${monthName} ${y === 'ALL' ? '' : y}`;
+            
+            const tbody = document.getElementById('sTableBody');
+            tbody.innerHTML = filtered.map(r => `
+                <tr style="border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 10px 5px;">${r.date.includes('T') ? r.date.split('T')[0].split('-').reverse().join('/') : r.date}</td>
+                    <td style="padding: 10px 5px; color:#64748b;">${r.invoiceno}</td>
+                    <td style="padding: 10px 5px;">${r.name}</td>
+                    <td style="padding: 10px 5px;">${r.item}</td>
+                    <td style="padding: 10px 5px; text-align:right; font-weight:900;">${r.amount}</td>
+                    <td style="padding: 10px 5px; text-align:right; color:${r.status==='PAID'?'#10b981':'#ef4444'};">${r.status}</td>
+                </tr>`).join('');
+            
+            const wrap = document.getElementById('hidden-statement-wrapper'); 
+            wrap.style.display = 'flex';
+            
+            setTimeout(async () => { 
+                const canvas = await html2canvas(document.getElementById('statement-render'), { scale: 2, useCORS: true }); 
+                const pdf = new jspdf.jsPDF('p', 'mm', 'a4'); 
+                pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 210, 297); 
+                pdf.save(`PT_Sales_Report_${monthName}_${y}.pdf`); 
+                
+                wrap.style.display = 'none'; 
+                btn.innerText = "Extract Report PDF"; btn.disabled = false;
+                showCustomAlert('success', 'Generated', 'Sales report extracted successfully.');
+            }, 800);
+            
+        } catch(e) {
+            showCustomAlert('error', 'Sync Failed', 'Server sync failed. Unable to generate report.');
+            btn.innerText = "Extract Report PDF"; btn.disabled = false;
+        }
+    }
 </script>
 </body>
 </html>
