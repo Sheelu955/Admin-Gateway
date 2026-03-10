@@ -66,9 +66,9 @@
         @keyframes popModal { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
         .animate-pop { animation: popModal 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
 
-        /* Hidden PDF Renderers */
+        /* Hidden PDF Renderers (Updated Statement Border) */
         #hidden-receipt-wrapper, #hidden-statement-wrapper { position: fixed; top: 0; left: 0; opacity: 0.01; z-index: -100; pointer-events: none; display: none; justify-content: center; width: 100%; }
-        #statement-render { width: 210mm; min-height: 297mm; background: white; color: #0f172a; padding: 15mm; border: 10px solid #1e293b; position: relative; font-family: sans-serif; box-sizing: border-box; }
+        #statement-render { width: 210mm; min-height: 297mm; background: white; color: #0f172a; padding: 15mm; border: 10px solid var(--bhagwa); position: relative; font-family: sans-serif; box-sizing: border-box; }
     </style>
 </head>
 <body>
@@ -98,7 +98,7 @@
 
 <div id="welcome-screen">
     <div class="welcome-glass p-10 md:p-14 rounded-[40px] text-center max-w-lg w-full mx-4 border-t-4 border-[#ff9933] relative overflow-hidden">
-        <img src="https://i.ibb.co/C30Ybjck/PT-20250224-170650-0000.png" class="w-32 mx-auto mb-10 rounded-3xl border-2 border-[#ff9933]/60 shadow-2xl shadow-[#ff9933]/50 relative z-10" crossorigin="anonymous">
+        <img src="https://i.ibb.co/PZT6qJ2Y/IMG-20260218-WA0001.jpg" class="w-32 mx-auto mb-10 rounded-3xl border-2 border-[#ff9933]/60 shadow-2xl shadow-[#ff9933]/50 relative z-10" crossorigin="anonymous">
         <h1 class="text-5xl font-black uppercase tracking-tighter mb-3 hero-text-gradient relative z-10 italic">Patel Traders</h1>
         <p class="text-[#ff9933] font-bold text-sm tracking-[6px] uppercase mb-8 relative z-10">Quantum Admin Vault</p>
         <button onclick="initializeSystem()" class="group relative w-full py-5 bg-gradient-to-r from-[#ff9933] to-[#cc5500] rounded-2xl overflow-hidden shadow-[0_20px_40px_-15px_rgba(255,153,51,0.6)] transition-all hover:scale-[1.02] active:scale-[0.98] z-10 cursor-pointer border border-[#ff9933]/50">
@@ -131,7 +131,7 @@
     <div class="max-w-[90rem] mx-auto">
         <div class="flex justify-between items-center mb-8 bg-white/5 p-4 md:p-6 rounded-3xl border border-white/10 backdrop-blur-md">
             <div class="flex items-center gap-4">
-                <img src="https://i.ibb.co/C30Ybjck/PT-20250224-170650-0000.png" class="w-12 h-12 rounded-xl shadow-lg border border-[#ff9933]/50" crossorigin="anonymous">
+                <img src="https://i.ibb.co/PZT6qJ2Y/IMG-20260218-WA0001.jpg" class="w-12 h-12 rounded-xl shadow-lg border border-[#ff9933]/50" crossorigin="anonymous">
                 <div>
                     <h1 class="text-2xl font-black italic uppercase tracking-tighter">Admin <span class="text-[#ff9933]">Dashboard</span></h1>
                     <div class="flex items-center gap-2"><div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div><p class="text-[9px] text-emerald-500 font-bold uppercase tracking-widest">Network Secure</p></div>
@@ -237,7 +237,7 @@
                     <div id="stU" class="stamp" style="display:none; color: #ef4444; border-color: #ef4444;">DUE</div>
                     
                     <div class="flex justify-between border-b-4 pb-6 border-slate-900">
-                        <img src="https://i.ibb.co/C30Ybjck/PT-20250224-170650-0000.png" class="w-20 rounded-xl" crossorigin="anonymous">
+                        <img src="https://i.ibb.co/PZT6qJ2Y/IMG-20260218-WA0001.jpg" class="w-20 rounded-xl" crossorigin="anonymous">
                         <div class="text-right uppercase">
                             <h1 class="text-3xl font-black text-slate-900">Patel Traders</h1>
                             <p class="text-[9px] font-bold text-slate-700">गांधीनगर, तालग्राम, कन्नौज (U.P.)</p>
@@ -295,10 +295,13 @@
 
 <div id="hidden-statement-wrapper">
     <div id="statement-render">
-        <div style="display:flex; justify-content:space-between; border-bottom:4px solid #0f172a; padding-bottom:20px; margin-bottom:30px; align-items:center;">
-            <div>
-                <h1 style="font-size:32px; font-weight:900; margin:0; text-transform:uppercase;">Sales Statement</h1>
-                <p style="font-size:12px; color:#64748b; font-weight:bold; margin-top:5px; text-transform:uppercase;">Period: <span id="sMonthYear" style="color:#0f172a;">--</span></p>
+        <div style="display:flex; justify-content:space-between; border-bottom:4px solid var(--bhagwa); padding-bottom:20px; margin-bottom:30px; align-items:center;">
+            <div style="display:flex; align-items:center; gap:16px;">
+                <img src="https://i.ibb.co/PZT6qJ2Y/IMG-20260218-WA0001.jpg" style="width: 80px; border-radius: 12px; border: 2px solid var(--bhagwa);" crossorigin="anonymous">
+                <div>
+                    <h1 style="font-size:32px; font-weight:900; margin:0; text-transform:uppercase;">Sales Statement</h1>
+                    <p style="font-size:12px; color:#64748b; font-weight:bold; margin-top:5px; text-transform:uppercase;">Period: <span id="sMonthYear" style="color:#0f172a;">--</span></p>
+                </div>
             </div>
             <div style="text-align:right;">
                 <h2 style="font-size:16px; font-weight:900; margin:0; text-transform:uppercase;">Patel Traders</h2>
@@ -342,7 +345,6 @@
 
 <script>
     const CONFIG = { 
-        // 🔥 ONLY THE URL IS CHANGED AS REQUESTED 🔥
         URL: "https://script.google.com/macros/s/AKfycbyQd21NpKp9d8lJn8_CBJablFaX0l9hkT7ct88KwDvsZfoot89dfxIatjd1zj10711R/exec", 
         PIN: "7314",
         TOKEN: "PT_ULTRA_7314_SANJAY_2026"
